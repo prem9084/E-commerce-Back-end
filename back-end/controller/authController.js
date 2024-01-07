@@ -250,7 +250,7 @@ export const orderController = async (req, res) => {
 
 export const getAllorderController = async (req, res) => {
   try {
-    const orders = await OrderModel.find({})
+    const orders = await OrderModel.find({buyer: req.user._id})
       .populate("products", "-photo")
       .populate("buyer", "name");
 
